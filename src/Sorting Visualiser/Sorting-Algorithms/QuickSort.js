@@ -69,13 +69,8 @@ async function getQuickSort(ANIMATION_SPEED) {
     let array = document.getElementsByClassName("array-bar");
     let l = 0;
     let r = array.length - 1;
-    helpers.disableSortingBtn();
-    helpers.disableSizeSlider();
-    helpers.disableNewArrayBtn();
-    await quickSort(array, l, r);
-    helpers.enableSortingBtn();
-    helpers.enableSizeSlider();
-    helpers.enableNewArrayBtn();
+    quickSort(array, l, r);
+ 
 }
 
 export default getQuickSort;

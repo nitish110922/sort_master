@@ -5,9 +5,13 @@ import classes from "./Header.module.css";
 const Header = (props) => {
     return (
         <header className={classes["header"]}>
-            <h1>Sorts</h1>
+            <h1>Sorting Visualiser</h1>
             <Navigation
-                // isRuning={props.isRuning}
+                
+                toggle={props.toggle}
+                sortfun={props.sortfun}
+                  ANIMATION_SPEED={props.ANIMATION_SPEED}
+                   array_length={props.array_length}
                 onResize={props.onResize}
                 onSpeed={props.onSpeed}
                 onGenerate={props.onGenerateArray}

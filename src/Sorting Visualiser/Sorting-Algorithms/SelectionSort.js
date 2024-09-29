@@ -5,8 +5,7 @@ const PRIMARY_COLOR = "#508991"; //steel green
 const SECONDARY_COLOR = "#ffb703"; //yellow
 const EQUALITY_COLOR = "rgb(138, 201, 38)"; //green
 const PIVOT_COLOR = "#fff"; //white
-// const UNEQUALITY_COLOR = "#ff595e"; // red
-// const SWAP_COLOR = "#6A4C93"; //purple
+
 
 async function selection() {
     const array = document.getElementsByClassName("array-bar");
@@ -44,11 +43,7 @@ async function selection() {
 
 export default async function getSelectionSort(ANIMATION_SPEED) {
     SPEED = ANIMATION_SPEED;
-    helpers.disableSortingBtn();
-    helpers.disableSizeSlider();
-    helpers.disableNewArrayBtn();
-    await selection();
-    helpers.enableSortingBtn();
-    helpers.enableSizeSlider();
-    helpers.enableNewArrayBtn();
+   
+ selection();
+
 }

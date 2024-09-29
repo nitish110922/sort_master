@@ -3,11 +3,8 @@ import * as helpers from "./helpers";
 let SPEED;
 
 const SECONDARY_COLOR = "#ffb703";
-const SWAP_COLOR = "#6A4C93";
+const SWAP_COLOR = "#cca8e9";
 const EQUALITY_COLOR = "rgb(138, 201, 38)";
-// const PRIMARY_COLOR = "#508991";
-// const UNEQUALITY_COLOR = "#ff595e";
-// const PIVOT_COLOR = "#fff";
 
 async function bubble() {
     const array = document.getElementsByClassName("array-bar");
@@ -33,11 +30,5 @@ async function bubble() {
 
 export default async function getBubbleSort(ANIMATION_SPEED) {
     SPEED = ANIMATION_SPEED;
-    helpers.disableSortingBtn();
-    helpers.disableSizeSlider();
-    helpers.disableNewArrayBtn();
-    await bubble();
-    helpers.enableSortingBtn();
-    helpers.enableSizeSlider();
-    helpers.enableNewArrayBtn();
+   bubble();
 }

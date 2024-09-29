@@ -4,10 +4,8 @@ const SECONDARY_COLOR_1 = "#ffb703"; //yellow
 const SECONDARY_COLOR_2 = "#6A4C93"; //yellow
 const EQUALITY_COLOR = "rgb(138, 201, 38)"; //green
 const SECONDARY_EQUALITY_COLOR = "#508991"; //primary-color
-// const PRIMARY_COLOR = "#508991"; //steel green
-// const UNEQUALITY_COLOR = "#ff595e"; // red
-// const PIVOT_COLOR = "#fff"; //white
-// const SWAP_COLOR = "#6A4C93"; //purple
+
+
 
 let SPEED;
 
@@ -102,11 +100,7 @@ export default async function getMergeSort(ANIMATION_SPEED) {
     let array = document.getElementsByClassName("array-bar");
     let l = 0;
     let r = parseInt(array.length) - 1;
-    helpers.disableSortingBtn();
-    helpers.disableSizeSlider();
-    helpers.disableNewArrayBtn();
-    await mergeSort(array, l, r);
-    helpers.enableSortingBtn();
-    helpers.enableSizeSlider();
-    helpers.enableNewArrayBtn();
+   
+    mergeSort(array, l, r);
+ 
 }

@@ -2,10 +2,7 @@ import * as helpers from "./helpers";
 
 let SPEED;
 
-// const SECONDARY_COLOR = "#ffb703";
-// const SWAP_COLOR = "#6A4C93";
-// const PRIMARY_COLOR = "#508991";
-// const PIVOT_COLOR = "#fff";
+
 const EQUALITY_COLOR = "rgb(138, 201, 38)";
 const INSERTION_COLOR = "#ff595e";
 
@@ -42,11 +39,7 @@ async function insertion() {
 
 export default async function getInsertionSort(ANIMATION_SPEED) {
     SPEED = ANIMATION_SPEED;
-    helpers.disableSortingBtn();
-    helpers.disableSizeSlider();
-    helpers.disableNewArrayBtn();
-    await insertion();
-    helpers.enableSortingBtn();
-    helpers.enableSizeSlider();
-    helpers.enableNewArrayBtn();
+   
+     insertion();
+   
 }

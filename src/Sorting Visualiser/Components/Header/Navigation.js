@@ -2,19 +2,21 @@ import React from "react";
 import classes from "./Navigation.module.css";
 
 const Navigation = (props) => {
+
+    function refreshPage() {
+        window.location.reload(false);
+      }
+
+
     return (
         <nav className={classes.nav}>
+
+
+
+
+                    { props.toggle?     
             <ul>
-                {/* <li className={classes.slider}>
-          <label>Size of Array and Speed</label>
-          <input
-            type="range"
-            min="1"
-            max="100"
-            // disabled={props.isRuning}
-            onChange={props.onResize}
-          />
-        </li> */}
+   
                 <li className={classes.slider}>
                     <label>Size of Array</label>
                     <input
@@ -77,13 +79,20 @@ const Navigation = (props) => {
                         Generate New Array!
                     </button>
                 </li>
-                <div className={classes.breaker}></div>
-        <li>
-          {/* <button href="/" onClick={props.onTSA}>
-            T.S.A.
-          </button> */}
+            
+       
+            </ul> : <ul className={classes.newnav}>  
+                <h1> {props.sortfun}</h1>
+                <li>
+        Animation speed = {props.ANIMATION_SPEED}ms
         </li>
-            </ul>
+        <li>
+        Array length = {props.array_length}
+        </li>
+        <li>
+        <button onClick={refreshPage}>Click to restart!</button>
+        </li>
+                 </ul> }
         </nav>
     );
 };

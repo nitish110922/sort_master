@@ -7,28 +7,26 @@ import getInsertionSort from "./Sorting-Algorithms/InsertionSort";
 import getSelectionSort from "./Sorting-Algorithms/SelectionSort";
 import "./SortingVisualiser.css";
 
-const PRIMARY_COLOR = "#508991";
-// const SECONDARY_COLOR = "#ffb703";
-// const EQUALITY_COLOR = "rgb(138, 201, 38)";
-// const UNEQUALITY_COLOR = "#ff595e";
-// const SWAP_COLOR = "#6A4C93";
-// const PIVOT_COLOR = "#fff";
+const PRIMARY_COLOR = "#cca8e9";
 
-const SortingVisualiser = (props) => {
+
+const SortingVisualiser = () => {
     const [array, resetArray] = useState([]);
     let [resetArrayDepend, setResetArrayDepend] = useState(1);
-
     let [ANIMATION_SPEED, SET_ANIMATION_SPEED] = useState(20);
-    let [NUMBER_OF_ARRAY_BARS, SET_NUMBER_OF_ARRAY_BARS] = useState(50);
+    let [array_length, set_array_length] = useState(50);
+
+    let [sortfun, setsort] = useState('a');
+    let [toggle, settoggle] = useState(true);
 
     useEffect(() => {
         const newArray = [];
-        for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
+        for (let i = 0; i < array_length; i++) {
             newArray.push(randomIntFromIntervals(5, 1000));
         }
 
         resetArray(newArray);
-    }, [resetArrayDepend, NUMBER_OF_ARRAY_BARS]);
+    }, [resetArrayDepend, array_length]);
 
     const arrayResetHandler = () => {
         const bars = document.getElementsByClassName("array-bar");
@@ -41,68 +39,73 @@ const SortingVisualiser = (props) => {
         const bars = document.getElementsByClassName("array-bar");
         for (let i = 0; i < bars.length; i++)
             bars[i].style.backgroundColor = PRIMARY_COLOR;
-        SET_NUMBER_OF_ARRAY_BARS(event.target.value);
+        set_array_length(event.target.value);
 
-        // console.log(NUMBER_OF_ARRAY_BARS);
+        
     };
 
     const speedChangeHandler = (event) => {
-        SET_ANIMATION_SPEED(320 - parseInt(event.target.value));
-        // console.log(ANIMATION_SPEED);
+        SET_ANIMATION_SPEED(1500-5*parseInt(event.target.value));
+     
+      console.log(ANIMATION_SPEED);
     };
 
     const mergeSortHandler = () => {
+        settoggle(false);
+        setsort("Merge Sort");
         getMergeSort(ANIMATION_SPEED);
     };
 
     const quickSortHandler = () => {
+        settoggle(false);
+        setsort("Quick Sort");
         getQuickSort(ANIMATION_SPEED);
     };
 
     const bubbleSortHandler = () => {
+        settoggle(false);
+        setsort("Bubble Sort");
         getBubbleSort(ANIMATION_SPEED);
     };
 
     const insertionSortHandler = () => {
+        settoggle(false);
+        setsort("Insertion Sort");
         getInsertionSort(ANIMATION_SPEED);
     };
 
     const selectionSortHandler = () => {
+        settoggle(false);
+        setsort("Selection Sort");
         getSelectionSort(ANIMATION_SPEED);
     };
 
-    // const TSAHandler = () => {
-    //   for (let i = 0; i < 100; i++) {
-    //     const bound = randomIntFromIntervals(1, 10);
-    //     const arr = [];
-    //     for (let j = 0; j < bound; j++) arr.push(randomIntFromIntervals(0, 1000));
-    //     const jsSortedArray = arr.slice().sort((a, b) => a - b);
-    //     const gotSortedArray = quickSort(arr, 0, arr.length - 1);
-
-    //     console.log(checkEqual(jsSortedArray, gotSortedArray));
-    //   }
-    // };
 
     const widthOfBars =
-        NUMBER_OF_ARRAY_BARS > 65
+        array_length > 65
             ? 5
-            : NUMBER_OF_ARRAY_BARS > 50
+            : array_length > 50
                 ? 10
-                : NUMBER_OF_ARRAY_BARS > 40
+                : array_length > 40
                     ? 18
-                    : NUMBER_OF_ARRAY_BARS > 30
+                    : array_length > 30
                         ? 20
-                        : NUMBER_OF_ARRAY_BARS > 20
+                        : array_length > 20
                             ? 25
-                            : NUMBER_OF_ARRAY_BARS > 12
+                            : array_length > 12
                                 ? 30
-                                : NUMBER_OF_ARRAY_BARS > 5
+                                : array_length > 5
                                     ? 100
                                     : 40;
 
     return (
         <>
             <Header
+          toggle={toggle}
+          sortfun={sortfun}
+            ANIMATION_SPEED={ANIMATION_SPEED}
+             array_length={array_length}
+
                 onResize={arrayResizeHandler}
                 onSpeed={speedChangeHandler}
                 onGenerateArray={arrayResetHandler}
@@ -111,7 +114,7 @@ const SortingVisualiser = (props) => {
                 onBubbleSort={bubbleSortHandler}
                 onInsertionSort={insertionSortHandler}
                 onSelectionSort={selectionSortHandler}
-            // onTSA={TSAHandler}
+           
             />
             <div className="array-container">
                 {array.map((value, idx) => {
@@ -125,7 +128,7 @@ const SortingVisualiser = (props) => {
                                 width: `${widthOfBars}px`,
                             }}
                         >
-                            {/* {value} */}
+                            
                         </div>
                     );
                 })}
